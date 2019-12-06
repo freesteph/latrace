@@ -14,4 +14,32 @@ class Tuple
   def vector?
     @w == 0
   end
+
+  def point?
+    not vector?
+  end
+
+  def self.vector x, y, z
+    Tuple.new(x, y, z, 0)
+  end
+
+  def self.point x, y, z
+    Tuple.new(x, y, z, 1)
+  end
+
+  def + other
+    Tuple.new(
+      @x + other.x,
+      @y + other.y,
+      @z + other.z,
+      @w + other.w
+    )
+  end
+
+  def == other
+    @x == other.x &&
+      @y == other.y &&
+      @z == other.z &&
+      @w == other.w
+  end
 end
