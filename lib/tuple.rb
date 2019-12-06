@@ -16,7 +16,7 @@ class Tuple
   end
 
   def point?
-    not vector?
+    @w == 1
   end
 
   def self.vector x, y, z
@@ -28,12 +28,24 @@ class Tuple
   end
 
   def + other
+    if point? && other.point?
+      raise "does not make sense"
+    end
+
     Tuple.new(
       @x + other.x,
       @y + other.y,
       @z + other.z,
       @w + other.w
     )
+  end
+
+  def klass
+    if vector? then "Vector" else "Point" end
+  end
+
+  def to_s
+    "[#{klass}: #{[@x, @y, @z, @w].join(', ')}]"
   end
 
   def == other

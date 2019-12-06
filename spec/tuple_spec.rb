@@ -68,5 +68,11 @@ describe 'Tuple' do
         expect(vector + vector).to eq Tuple.vector(10, 12, 14)
       end
     end
+
+    context 'when a point is added to another point' do
+      it 'throws an error' do
+        expect { point + point }.to raise_error /does not make sense/
+      end
+    end
   end
 end
